@@ -6,7 +6,7 @@ from fastapi_zero.app import app
 
 
 def test_root_devr_retornar_ok_e_ola_mundo():
-    """ 
+    """
     Esse teste tem 3 etapas (AAA)
     - A: Arrange - Arranjo
     - A: Act     - Executa a coisa (o SUT)
@@ -19,3 +19,12 @@ def test_root_devr_retornar_ok_e_ola_mundo():
     # assert
     assert response.status_code == HTTPStatus.OK
     assert response.json() == {'message': 'Olá mundo!'}
+
+
+def test_exercicio_aula_02():
+    client = TestClient(app)
+
+    response = client.get('/exercicio-html')
+
+    assert response.status_code == HTTPStatus.OK
+    assert '<h1> Olá Mundo </h1>' in response.text
