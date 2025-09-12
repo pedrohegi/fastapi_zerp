@@ -75,6 +75,21 @@ def test_user_not_found(client):
     assert response.status_code == HTTPStatus.NOT_FOUND
 
 
+def test_read_user_exercicio(client):
+    response = client.get('/users/1')
+
+    assert response.json() == {
+        'username': 'testusername2',
+        'email': 'teste2@teste.com',
+        'id': 1,
+    }
+
+
+def test_read_user_exercicio_not_found(client):
+    response = client.get('/users/123')
+    assert response.status_code == HTTPStatus.NOT_FOUND
+
+
 def test_delete_user(client):
     response = client.delete('/users/1')
     assert response.json() == {'message': 'User Deleted'}

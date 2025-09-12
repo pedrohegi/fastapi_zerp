@@ -66,5 +66,5 @@ def read_user_exercicio(user_id: int):
         raise HTTPException(
             status_code=HTTPStatus.NOT_FOUND, detail='User Not Found'
         )
-    
+
     return database[user_id - 1]
